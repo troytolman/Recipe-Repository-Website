@@ -1,0 +1,112 @@
+#navdiv {
+  background-color: #7e33ee;
+  height: 80%;
+}
+
+/* Add a black background color to the top navigation */
+.topnav {
+  background-color: #333;
+  overflow: hidden;
+  transform: translateY(15px); 
+  width: 70%;
+  float: right;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left; 
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 40px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+
+hr {
+  margin-top: 4%;
+
+}
+
+#logo {
+  float: left;
+  padding-right: 3%;
+}
+
+#low {
+  width: 100%;
+}
+
+
+#junk {
+  float: right;
+  margin-right: 15%;
+}
+
+p {
+  width: 30%;
+  float:left;
+}
+
+.lowclass {
+  margin-left: 15%;
+}
+
+#explore {
+  float: none;
+  font-size: 35;
+  border: 3px solid black;
+  margin-top: 10%;
+  margin-left: 35%;
+  width: 30%;
+  text-align: center;
+}
+
+#search {
+  float: none;
+  margin-top: 5%;
+  margin-left: 45%;
+  margin-bottom: 10%;
+}
+
+#searchform {
+  margin-top: 10%;
+}
+
+#footer {
+  background-color: rgba(126, 51, 238, .3);
+  width: 100%;
+  height: 30%;
+  padding-top: 3%;
+}
+
+.foot {
+  float: none;
+  padding-left: 47%;
+  padding-right: 40%;
+  text-align: center;
+}
+
+#h1foot {
+  padding-left: 40%;
+  padding-right: 40%;
+}
+
+#pfoot {
+  padding-left: 35%;
+  padding-right: 55%;
+}
+
+
+
