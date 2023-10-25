@@ -9,7 +9,7 @@
 <img src="logo.jpg" alt="" width="80" height="80">
 <h1 id="logo">Boise Chef</h1>
 <div class="topnav">
-  <a class=<?php echo ($page == 'index') ? 'active' : ''; ?> href="index.html">Home</a>
+  <a class=<?php echo ($page == 'index') ? 'active' : ''; ?> href="index.php">Home</a>
   <a href="popular.html">Popular</a>
   <a href="upload.html">Upload</a>
   <a href="favorite.html">Favorites</a>
