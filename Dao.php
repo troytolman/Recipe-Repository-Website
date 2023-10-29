@@ -7,7 +7,7 @@ class Dao {
   private $user = "krvu9t55m8wgwnpc";
   private $pass = "orf3fnxt4x8vdd65";
 
-  public function getConnection () {
+  public function getConnection() {
     return
       new PDO("mysql:host={$this->host};dbname={$this->db}", $this->user,
           $this->pass);
@@ -23,14 +23,29 @@ class Dao {
 //     $q->execute();
 //   }
 
-public function printStuff($something) {
-    
-    echo "<pre>" . $something . "</pre>";
- }
+  public function createUser($email, $username, $password) {
+    $conn = $this->getConnection();
+    $addUser = "INSERT INTO users (user_email, user_name, user_password)
+                VALUES (:email, :username, :password);";
+    $q = $conn->prepare($addUser);
+    $q->bindParam(":email", $email);
+    $q->bindParam(":username", $username);
+    $q->bindParam(":password", $password);
+    $q->execute();
+  }
  
 
-  public function authenticate ($username, $password) {
-     // TODO make an actual table.
-     return ($username == "conrad" && $password == 'abc123');
+  public function authenticate($username, $password) {
+    $conn = $this->getConnection();
+    $select = "SELECT count(user_name) FROM users WHERE user_name = :username AND user_password = :password;";
+    $q = $conn->prepare($select);
+    $q->bindParam(":username", $username);
+    $q->bindParam(":password", $password);
+    $ret = $q->execute();
+    if ($ret >= 1) {
+      return true;
+    } else {
+      return false;
+    }
   }
 } // end Dao

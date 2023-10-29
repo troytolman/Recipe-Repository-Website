@@ -1,38 +1,24 @@
-<html>
-<head>
-  <link rel="stylesheet" href="explore.css">
-  <title>Boise Chef</title>
-  <link rel="icon" type="image/x-icon" href="favicon-32x32.png">
-</head>
-<body>
-  <div id="navdiv">
-<img src="logo.jpg" alt="" width="80" height="80">
-<h1 id="logo">Boise Chef</h1>
-<div class="topnav">
-  <a href="index.html">Home</a>
-  <a href="popular.html">Popular</a>
-  <a href="upload.html">Upload</a>
-  <a href="favorite.html">Favorites</a>
-  <a class="active" href="explore.html">Explore</a>
-  <a href="login.html">Log in/Sign up</a>
-</div>
-<hr>
+<?php
+  session_start();
 
-<div id="explore"> 
-  Explore Boise Chef Now!!!
-</div>
+  if(!isset($_SESSION['authenticated'])) {
+    header('Location: login.php');
+    exit; 
+  }
+  if(isset($_SESSION['authenticated']) && !$_SESSION['authenticated']) {
+    header('Location: login.php');
+    exit; 
+  }
 
-<div id="search">
-  <input type="text" placeholder="Search..">
-<form id="searchform">
-  <label for="breakfast"><input type="checkbox" id="breakfast" name="items" value="breakfast"> breakfast</label><br>
-  <label for="lunch"><input type="checkbox" id="lunch" name="items" value="lunch"> lunch</label><br>
-  <label for="dinner"><input type="checkbox" id="dinner" name="items" value="dinner"> dinner</label><br>
-  <label for="dessert"><input type="checkbox" id="dessert" name="items" value="dessert"> dessert</label><br>
-  <label for="beginner"><input type="checkbox" id="beginner" name="items" value="beginner"> beginner</label><br>
-  <label for="intermediate"><input type="checkbox" id="intermediate" name="items" value="intermediate"> intermediate</label><br>
-  <label for="expert"><input type="checkbox" id="expert" name="items" value="expert"> expert</label><br>
-</form>
+  $page = 'fav';
+  require("nav_loggedin.php"); 
+?>
+
+<div id="low">
+  <img src="junk.svg" alt="" width="400" height="400" id="junk">
+<h1 class="lowclass">Recipe Name from Popular Recipes</h1>
+<p class="lowclass">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.</p>
+<button id="explorebutton" href="explore.html">Explore Recipes!</button>
 </div>
 
 </div>
@@ -64,7 +50,6 @@
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip</p>
   </div>
 </div>
-
 
 
 

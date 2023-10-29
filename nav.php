@@ -12,8 +12,8 @@
   <a class=<?php echo ($page == 'index') ? 'active' : "wait"; ?> href='index.php'>Home</a>
   <a class=<?php echo ($page == 'pop') ? 'active' : "wait"; ?> href="popular.php">Popular</a>
   <a class=<?php echo ($page == 'up') ? 'active' : "wait"; ?> href="upload.php">Upload</a>
-  <a href="favorite.html">Favorites</a>
-  <a href="explore.html">Explore</a>
-  <a href="login.html">Log in/Sign up</a>
+  <a class=<?php echo ($page == 'fav') ? 'active' : "wait"; ?> href="favorite.php">Favorites</a>
+  <a class=<?php echo ($page == 'exp') ? 'active' : "wait"; ?> href="explore.php">Explore</a>
+  <a class=<?php echo ($page == 'login') ? 'active' : "wait"; ?> href="login.php">Log in/Sign up</a>
 </div>
 <hr>

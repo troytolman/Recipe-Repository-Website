@@ -1,6 +1,17 @@
 <?php
+  session_start();
+
+  if(!isset($_SESSION['authenticated'])) {
+    header('Location: login.php');
+    exit; 
+  }
+  if(isset($_SESSION['authenticated']) && !$_SESSION['authenticated']) {
+    header('Location: login.php');
+    exit; 
+  }
+  
   $page = 'up';
-  require("nav.php"); 
+  require("nav_loggedin.php"); 
   require('Dao.php');
   $dao = new Dao();
   // $recipes = $dao->getRecipes(); still need to modify
@@ -20,7 +31,7 @@
     <label for="title"><input type="text" id="title" name="recipedetails" value="title"> title</label><br>
     <label for="servings"><input type="text" id="servings" name="recipedetails" value="servings"> # of servings</label><br>
     <label for="ingredients"><input type="text" id="ingredients" name="recipedetails" value="ingredients"> add commma separated values</label><br>
-    <label for="pic"><input type="file" id="pic" name="image" value="upload a picture!">   PNG or JPEG</label><br>
+    <label for="pic"><input type="button" id="pic" name="recipedetails" value="upload a picture!">   PNG or JPEG</label><br>
   </form>
   <button id="submit"> Submit your recipe!</button>
 </div>
