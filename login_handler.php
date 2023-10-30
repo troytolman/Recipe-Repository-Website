@@ -10,7 +10,8 @@ $dao = new Dao();
 $_SESSION['authenticated'] = $dao->authenticate($username, $password);
 
 if ($_SESSION['authenticated']) {
-   header('Location: login.php'); // change to logged in version
+   $_SESSION['userID'] = $dao->getUserID($username);
+   header('Location: login_loggedin.php'); 
 } else {
    header('Location: login.php');
 }

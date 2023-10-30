@@ -27,13 +27,15 @@
 
 <div id="details">
   <h1>Recipe Details</h1>
-  <form action="POST">
-    <label for="title"><input type="text" id="title" name="recipedetails" value="title"> title</label><br>
-    <label for="servings"><input type="text" id="servings" name="recipedetails" value="servings"> # of servings</label><br>
-    <label for="ingredients"><input type="text" id="ingredients" name="recipedetails" value="ingredients"> add commma separated values</label><br>
-    <label for="pic"><input type="button" id="pic" name="recipedetails" value="upload a picture!">   PNG or JPEG</label><br>
+  <form method="POST" action="upload_handler.php" enctype="multipart/form-data">
+    <label for="title"><input type="text" id="title" name="title" value="title"> title</label><br>
+    <label for="ingredients"><input type="text" id="ingredients" name="ingredients" value="ingredients"> add commma separated values</label><br>
+    <label for="cooktime"><input type="text" id="cooktime" name="cooktime" value="cook time"> cook time</label><br>
+    <label for="servings"><input type="text" id="servings" name="servings" value="servings"> # of servings</label><br>
+    <label for="instructions"><input type="text" id="instructions" name="instructions" value="instructions"> add commma separated steps</label><br>
+    <label for="pic"><input type="file" id="pic" name="image" value="upload a picture!">   PNG or JPEG</label><br>
+    <input id="submit" type="submit">
   </form>
-  <button id="submit"> Submit your recipe!</button>
 </div>
 
 

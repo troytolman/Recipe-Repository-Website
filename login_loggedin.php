@@ -13,6 +13,8 @@
 
   $page = 'login';
   require("nav_loggedin.php"); 
+
+  echo "<pre>" . $_SESSION['userID'] . "</pre>";
 ?>
 
 <div id="signin">
