@@ -12,6 +12,7 @@
 
   $page = 'fav';
   require("nav_loggedin.php"); 
+  require_once('Dao.php');
 ?>
 
 <div id="low">
@@ -25,30 +26,19 @@
 
 
 
-<div id="table"> 
-  <div id="row1">
-    <img src="junk.svg" alt="Image 1" width="200" height="200">
-    <h3 id="title1">Recipe 1</h3>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip</p>
-  </div>
-
-  <div id="row2">
-    <img src="junk.svg" alt="Image 1" width="200" height="200">
-    <h3 id="title2">Recipe 2</h3>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip</p>
-  </div>
-
-  <div id="row3">
-    <img src="junk.svg" alt="Image 1" width="200" height="200">
-    <h3 id="title3">Recipe 3</h3>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip</p>
-  </div>
-
-  <div id="row4">
-    <img src="junk.svg" alt="Image 1" width="200" height="200">
-    <h3 id="title4">Recipe 4</h3>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip</p>
-  </div>
+<div class="recipe-preview-container">
+<?php 
+  $dao = new Dao();
+  $recipes = $dao->getFavRecipes($_SESSION['userID']);
+  foreach ($recipes as $recipe) {
+    echo '<div class="recipe-preview">';
+    echo '<img src=' . $recipe['image_path'] . ' width="300" height="200">';
+    echo '<h3><a href="recipe.php?id=' . $recipe['recipeID'] . '">' . $recipe['title'] . '</a></h3>';
+    echo '<p>' . $recipe['description'] . '</p>';
+    // Add more content here
+    echo '</div>';
+  }
+?>
 </div>
 
 

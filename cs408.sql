@@ -27,6 +27,13 @@ CREATE TABLE favorites (
     FOREIGN KEY (recipeID) REFERENCES recipes(recipeID)
 );
 
+CREATE TABLE tags(
+recipeIDtagged INT NOT NULL,
+meal ENUM('breakfast', 'lunch', 'dinner', 'dessert') NOT NULL,
+difficulty ENUM('easy', 'intermediate', 'hard') NOT NULL,
+FOREIGN KEY (recipeIDtagged) REFERENCES recipes(recipeID)
+);
+
 -- Additional tables and features can be added as needed.
 
 

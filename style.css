@@ -1,6 +1,6 @@
 #navdiv {
   background-color: #7e33ee;
-  height: 80%;
+  height: 100%;
 }
 
 /* Add a black background color to the top navigation */
@@ -88,7 +88,10 @@ p {
   background-color: rgba(126, 51, 238, .3);
   width: 100%;
   height: 30%;
+  margin-top: 25%;
   padding-top: 3%;
+  display: inline-block;
+  flex: 0;
 }
 
 .foot {
@@ -105,8 +108,168 @@ p {
 
 #pfoot {
   padding-left: 35%;
-  padding-right: 55%;
+  padding-right: 25%;
+}
+
+.recipe-preview-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.recipe-preview {
+  width: 30%; /* Adjust as needed to leave space for margins and padding */
+  margin-bottom: 20px; /* Add some spacing between previews */
 }
 
 
 
+
+
+
+/* recipe stuff*/
+.title {
+  float: left;
+  margin-top: 5%;
+  margin-left: 10%;
+  font-size: 25;
+  width: 70%;
+}
+
+#titlebutton {
+  float: right;
+  width: 12%;
+  height: 7%;
+  font-size: 15;
+}
+
+.recipedesc {
+  float: left;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 3%;
+}
+
+.recipedesc img {
+  height: 90%;
+  width: 100%;
+}
+
+.ingredients {
+  height: 60%;
+  width: 80%;
+  background-color: rgba(126, 51, 238, .3);
+  float:right;
+  margin: 10% 10% 2% 10%;
+  padding-bottom: 10%;
+}
+
+.ingredients h2{
+  padding-left: 20%;
+  padding-top: 3%;
+  font-size: 35;
+}
+
+.ingredients hr {
+  margin-top: 10%;
+  width: 90%;
+  border-color: #333;
+}
+
+.times {
+  float: left;
+  width: 80%;
+}
+
+.times span {
+  padding-left: 10%;
+}
+
+#ingredientstitle {
+  font-size: 25;
+}
+
+.ingredients ul {
+  padding-left: 10%
+}
+
+.methods {
+  float: left;
+  width: 100%;
+  height: 120%;
+}
+
+.methods h2 {
+  margin-left: 10%;
+  padding-top: 3%;
+  font-size: 35;
+}
+
+#step {
+  width: 80%;
+  margin-left: 10%;
+  border-style: solid;
+  float:left;
+  margin-bottom: 3%;
+}
+
+#step h2{
+  margin-left: 1%;
+  padding-top: 0%;
+  width: 15%;
+}
+
+#step p {
+  padding-bottom: 3%;
+  padding-left: 3%;
+  font-size: 20;
+}
+
+.recipe-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Create a 3x3 grid */
+  gap: 20px; /* Adjust the gap between recipe cards */
+}
+
+.recipe-card {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+}
+
+.recipe-card p {
+  width: 100%;
+}
+
+.recipe-card img {
+  max-width: 100%;
+  height: auto;
+}
+
+#message {
+  width: 15%;
+  padding: 10 10;
+  margin-bottom: 1%;
+  color: white;
+  font-family: 'Delicious Handrawn', cursive;
+}
+
+.sad {
+  background-color: red;
+}
+
+.happy {
+  background-color: green;
+}
+
+/* .close {
+  font-size: 10px;
+  position: relative;
+  top: -10px;
+  right: -15px;
+  cursor:pointer;
+}
+
+.close:hover {
+  text-decoration:underline; 
+}*/

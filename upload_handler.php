@@ -1,5 +1,5 @@
 <?php
-
+require_once 'Dao.php';
 session_start();
 
 if(!isset($_SESSION['authenticated'])) {
@@ -34,7 +34,7 @@ if (file_exists($target_file)) {
   $uploadOk = 0;
 }
 
-// Check file size
+// Check file size < 500KB
 if ($_FILES["image"]["size"] > 500000) {
   echo "Sorry, your file is too large.";
   $uploadOk = 0;
@@ -54,22 +54,37 @@ if ($uploadOk == 0) {
 } else {
   if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
     echo "The file ". htmlspecialchars( basename( $_FILES["image"]["name"])). " has been uploaded.";
+    $title = trim($_POST['title']);
+    $ingredients = trim($_POST['ingredients']);
+    $cooktime = trim($_POST['cooktime']);
+    $servings = trim($_POST['servings']);
+    $instructions = trim($_POST['instructions']);
+    $description = trim($_POST['description']);
+    $tag1 = $_POST['checklist1'];
+    $tag2 = $_POST['checklist2']; 
+    if (empty($title) || empty($ingredients) || empty($cooktime) || empty($servings) || empty($instructions) || empty($description)) {
+      $_SESSION['message'] = 'One or more fields are missing.';
+      $_SESSION['message_type'] = "sad";
+      header('Location: upload_loggedin.php'); // Redirect back to the login page or show an error message
+      exit;
+    } else {
+      // Sanitize fields before using them in a database query
+      $title = htmlspecialchars($title, ENT_QUOTES, 'UTF-8');
+      $ingredients = htmlspecialchars($ingredients, ENT_QUOTES, 'UTF-8');
+      $cooktime = htmlspecialchars($cooktime, ENT_QUOTES, 'UTF-8');
+      $servings = htmlspecialchars($servings, ENT_QUOTES, 'UTF-8');
+      $instructions = htmlspecialchars($instructions, ENT_QUOTES, 'UTF-8');
+      $description = htmlspecialchars($description, ENT_QUOTES, 'UTF-8');
+    }  
+    // $target_file for image file path
+    $dao = new Dao();
+    $dao->addRecipe($title, $ingredients, $cooktime, $servings, $instructions, $target_file, $_SESSION['userID'], $description, $tag1, $tag2);
   } else {
     echo "Sorry, there was an error uploading your file.";
   }
 }
 
-require_once 'Dao.php';
-$title = trim($_POST['title']);
-$ingredients = trim($_POST['ingredients']);
-$cooktime = trim($_POST['cooktime']);
-$servings = trim($_POST['servings']);
-$instructions = trim($_POST['instructions']);
-// $target_file for image file path
 
-$dao = new Dao();
-
-$success = $dao->addRecipe($title, $ingredients, $cooktime, $servings, $instructions, $target_file, $_SESSION['userID']);
 
 // if ($success) {              probably just take to recipe page
 //     header("Location")

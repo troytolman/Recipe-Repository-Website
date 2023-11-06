@@ -1,10 +1,11 @@
-
+<!-- <!DOCTYPE html> -->
+<html>
 <head>
   <link rel="stylesheet" href="style.css">
   <title>Boise Chef</title>
   <link rel="icon" type="image/x-icon" href="favicon-32x32.png">
 </head>
-
+<body>
   <div id="navdiv">
 <img src="logo.jpg" alt="" width="80" height="80">
 <h1 id="logo">Boise Chef</h1>
