@@ -1,7 +1,15 @@
 <?php
   $page = '';
-  require_once("nav.php"); 
   require_once('Dao.php');
+  session_start();
+
+  if(!isset($_SESSION['authenticated'])) {
+    require("nav.php"); 
+  }
+  if(isset($_SESSION['authenticated']) && $_SESSION['authenticated']) {
+    require("nav_loggedin.php"); 
+  }
+
   $recipeID = $_GET['id'];
   $dao = new Dao();
   $recipe = $dao->getRecipe($recipeID);
@@ -55,27 +63,7 @@
     $i++;
   }
 ?>
-  <!-- <div id="step1">
-    <h2>Step 1</h2>
-    <p>Preheat the oven to 350°F.
-      Grease a 12-cup Bundt pan liberally with butter or nonstick baking
-      spray. Set it aside.</p>
-  </div>
-  <div id="step2">
-    <h2>Step 2</h2>
-    <p>Prepare the cinnamon sugar and biscuit dough:
-      In a large bowl, whisk together the granulated sugar and cinnamon.
-      Separate the biscuit dough and cut each biscuit into 6 evenly sized
-      pieces.</p>
-  </div>
-  <div id="step3">
-    <h2>Step 3</h2>
-    <p>Coat the biscuit dough:
-      Add the biscuit pieces to the bowl of cinnamon sugar, and use your hands to
-      toss and evenly coat each piece with the cinnamon sugar. Transfer the
-      coated dough and any extra cinnamon sugar into the prepared Bundt pan,
-      and distribute them evenly in the pan.</p>
-  </div> -->
+  
 </div>
 
 

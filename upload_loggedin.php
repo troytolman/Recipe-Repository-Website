@@ -33,26 +33,27 @@
       unset($_SESSION['message_type']);
    }
 ?>
-    <label for="title"><input type="text" id="title" name="title" placeholder="title"> title</label><br>
+    <label><input type="text" id="title" name="title" value="<?php echo isset($_SESSION['inputs']['title']) ? $_SESSION['inputs']['title'] : '' ?>"> title</label><br>
 
-    <label>Select one option:</label><br>
-    <label><input type="radio" name="checklist1" value="breakfast">breakfast</label><br>
-    <label><input type="radio" name="checklist1" value="lunch">lunch</label><br>
-    <label><input type="radio" name="checklist1" value="dinner">dinner</label><br>
-    <label><input type="radio" name="checklist1" value="dessert">dessert</label><br>
-    <label>Select one option:</label><br>
-    <label><input type="radio" name="checklist2" value="easy">easy</label><br>
-    <label><input type="radio" name="checklist2" value="intermediate">intermediate</label><br>
-    <label><input type="radio" name="checklist2" value="hard">hard</label><br>
+    <label>Select one meal option:</label><br>
+    <label><input type="radio" name="checklist1" value="breakfast" <?php echo (isset($_SESSION['inputs']['checklist1']) && $_SESSION['inputs']['checklist1'] === 'breakfast') ? 'checked' : ''; ?>>breakfast</label><br>
+    <label><input type="radio" name="checklist1" value="lunch" <?php echo (isset($_SESSION['inputs']['checklist1']) && $_SESSION['inputs']['checklist1'] === 'lunch') ? 'checked' : ''; ?>>lunch</label><br>
+    <label><input type="radio" name="checklist1" value="dinner" <?php echo (isset($_SESSION['inputs']['checklist1']) && $_SESSION['inputs']['checklist1'] === 'dinner') ? 'checked' : ''; ?>>dinner</label><br>
+    <label><input type="radio" name="checklist1" value="dessert" <?php echo (isset($_SESSION['inputs']['checklist1']) && $_SESSION['inputs']['checklist1'] === 'dessert') ? 'checked' : ''; ?>>dessert</label><br>
+    <label>Select one difficulty option:</label><br>
+    <label><input type="radio" name="checklist2" value="easy" <?php echo (isset($_SESSION['inputs']['checklist2']) && $_SESSION['inputs']['checklist2'] === 'easy') ? 'checked' : ''; ?>>easy</label><br>
+    <label><input type="radio" name="checklist2" value="intermediate" <?php echo (isset($_SESSION['inputs']['checklist2']) && $_SESSION['inputs']['checklist2'] === 'intermediate') ? 'checked' : ''; ?>>intermediate</label><br>
+    <label><input type="radio" name="checklist2" value="hard" <?php echo (isset($_SESSION['inputs']['checklist2']) && $_SESSION['inputs']['checklist2'] === 'hard') ? 'checked' : ''; ?>>hard</label><br>
 
-    <label for="ingredients"><input type="text" id="ingredients" name="ingredients" placeholder="ingredients"> add commma separated values</label><br>
-    <label for="cooktime"><input type="text" id="cooktime" name="cooktime" placeholder="cook time"> cook time</label><br>
-    <label for="servings"><input type="text" id="servings" name="servings" placeholder="servings"> # of servings</label><br>
-    <label for="instructions"><input type="text" id="instructions" name="instructions" placeholder="instructions"> add commma separated steps</label><br>
-    <label for="description"><input type="text" id="description" name="description" placeholder="description"> description</label><br>
-    <label for="pic"><input type="file" id="pic" name="image" placeholder="upload a picture!">   PNG or JPEG</label><br>
+    <label for="ingredients"><input type="text" id="ingredients" name="ingredients" value="<?php echo isset($_SESSION['inputs']['ingredients']) ? $_SESSION['inputs']['ingredients'] : '' ?>"> add commma separated values</label><br>
+    <label for="cooktime"><input type="text" id="cooktime" name="cooktime" value="<?php echo isset($_SESSION['inputs']['cooktime']) ? $_SESSION['inputs']['cooktime'] : '' ?>"> cook time</label><br>
+    <label for="servings"><input type="text" id="servings" name="servings" value="<?php echo isset($_SESSION['inputs']['servings']) ? $_SESSION['inputs']['servings'] : '' ?>"> # of servings</label><br>
+    <label for="instructions"><input type="text" id="instructions" name="instructions" value="<?php echo isset($_SESSION['inputs']['instructions']) ? $_SESSION['inputs']['instructions'] : '' ?>"> add commma separated steps</label><br>
+    <label for="description"><input type="text" id="description" name="description" value="<?php echo isset($_SESSION['inputs']['description']) ? $_SESSION['inputs']['description'] : '' ?>"> description</label><br>
+    <label for="pic"><input type="file" id="pic" name="image" value="<?php echo isset($_SESSION['inputs']['image']) ? $_SESSION['inputs']['image'] : '' ?>">   PNG or JPEG</label><br>
     <input id="submit" type="submit">
   </form>
+  <?php unset($_SESSION['inputs']); ?>
 </div>
 
 

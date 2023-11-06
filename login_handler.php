@@ -3,6 +3,8 @@ session_start();
 
 require_once 'Dao.php';
 
+$_SESSION['input'] = $_POST;
+
 $username = trim($_POST['username']);
 $password = trim($_POST['password']);
 if (empty($username) || empty($password)) {
@@ -16,12 +18,14 @@ $username = htmlspecialchars($username, ENT_QUOTES, 'UTF-8'); // Sanitize the us
 $dao = new Dao();
 $_SESSION['authenticated'] = $dao->authenticate($username, $password);
 
-if ($_SESSION['authenticated']) {
+if ($_SESSION['authenticated'] === true) {
    $_SESSION['userID'] = $dao->getUserID($username);
    $_SESSION['message'] = 'Thank you for logging in!';
    $_SESSION['message_type'] = "happy";
    header('Location: login_loggedin.php'); 
 } else {
+   $_SESSION['message'] = 'Invalid Username or password';
+   $_SESSION['message_type'] = "sad";
    header('Location: login.php');
 }
 exit;

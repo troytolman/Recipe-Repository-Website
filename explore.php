@@ -6,10 +6,16 @@
 <div id="explore"> 
   Explore Boise Chef Now!!!
 </div>
-
 <div id="search">
-  
 <form id="searchform" method="GET" action="explore.php">
+  <?php  
+  if(isset($_SESSION['message'])) {
+    echo "<div id='content'>";
+    echo "<div class='" . $_SESSION['message_type'] . "' id='message'>" . $_SESSION['message'] . "</div>";
+    unset($_SESSION['message']);
+    unset($_SESSION['message_type']);
+ }
+  ?>
   <input type="text" name="titleSearch" placeholder="Search..">
 
   <label><input type="checkbox" name="meal[]" value="breakfast">breakfast</label><br>
@@ -18,7 +24,7 @@
   <label><input type="checkbox" name="meal[]" value="dessert">dessert</label><br>
   <label><input type="checkbox" name="difficulty[]" value="easy">easy</label><br>
   <label><input type="checkbox" name="difficulty[]" value="intermediate">intermediate</label><br>
-  <label><input type="checkbox" name="difficulty[]" value="expert">expert</label><br>
+  <label><input type="checkbox" name="difficulty[]" value="hard">hard</label><br>
   <input id="submit" type="submit">
 </form>
 </div>
@@ -39,8 +45,15 @@ $dao = new Dao();
       $titleSearch = "%";
     } else {
       $titleSearch = htmlspecialchars($titleSearch, ENT_QUOTES, 'UTF-8');
+      $pattern = "/^[a-zA-Z0-9\s\-]+$/";
+
+      if (!preg_match($pattern, $titleSearch)) {
+        $_SESSION['message'] = 'Invalid title, try again';
+        $_SESSION['message_type'] = "sad";
+        header('Location: explore.php'); // Redirect back to the login page or show an error message
+        exit;
+      } 
     }
-    
     $meals = NULL;
     $difficulties = NULL;
     if (isset($_GET["meal"]) && array_intersect($_GET["meal"], ["breakfast", "lunch", "dinner", "dessert"])) {
@@ -49,7 +62,7 @@ $dao = new Dao();
       $meals = [];
     }
 
-    if (isset($_GET["difficulty"]) && array_intersect($_GET["difficulty"], ["easy", "intermediate", "expert"])) {
+    if (isset($_GET["difficulty"]) && array_intersect($_GET["difficulty"], ["easy", "intermediate", "hard"])) {
       $difficulties = $_GET["difficulty"];
     } else {
       $difficulties = [];
@@ -57,7 +70,7 @@ $dao = new Dao();
    
     $recipes = $dao->explore($titleSearch, $meals, $difficulties);
 
-    //var_dump($recipes);
+    // TODO: add message if nothing was matched
 
     echo '<div class="recipe-grid">';
     foreach ($recipes as $recipe) {
@@ -72,12 +85,5 @@ $dao = new Dao();
   }
   
 
-
-
-
-
-
-
 include_once("footer.html"); 
-
 

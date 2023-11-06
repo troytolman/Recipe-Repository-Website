@@ -48,14 +48,14 @@ class Dao {
             }
           }
         } else {
-          $searchRecipe .= ":difficulty);";
+          $searchRecipe .= ":difficulty)";
         }
     } else {
-      $searchRecipe .= ";"; 
+      //$searchRecipe .= ";"; 
     }
      //echo $searchRecipe;
     // echo $meals;
-
+    $searchRecipe .= " LIMIT 10;";
     $q = $conn->prepare($searchRecipe);
     $q->bindParam(':title', $titleSearch);
     if (!empty($meals)) {
@@ -110,6 +110,16 @@ class Dao {
     $q->bindParam(":tag1", $tag1);
     $q->bindParam(":tag2", $tag2);
     $q->execute();
+  }
+
+  public function getRecipeID($title, $userID) {
+    $conn = $this->getConnection();
+    $getRecipe = "SELECT recipeID FROM recipes WHERE userID = :userID and title = :title LIMIT 1;";
+    $q = $conn->prepare($getRecipe);
+    $q->bindParam(":userID", $userID);
+    $q->bindParam(":title", $title);
+    $q->execute();
+    return $q->fetchColumn();
   }
 
   public function getRecipes() {
@@ -173,7 +183,8 @@ class Dao {
     $q = $conn->prepare($select);
     $q->bindParam(":username", $username);
     $q->bindParam(":password", $password);
-    $ret = $q->execute();
+    $q->execute();
+    $ret = $q->fetchColumn();
     if ($ret >= 1) {
       return true;
     } else {
