@@ -27,7 +27,7 @@ if (isset($imageName) && is_string($imageName) && !empty($imageName)) {
     exit;
 }
 
-$target_dir = "images/";
+$target_dir = "app/images/";
 $target_file = $target_dir . $imageName;
 $uploadOk = 1;
 $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
