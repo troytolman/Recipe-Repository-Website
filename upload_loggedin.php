@@ -50,7 +50,7 @@
     <label for="servings"><input type="text" id="servings" name="servings" value="<?php echo isset($_SESSION['inputs']['servings']) ? $_SESSION['inputs']['servings'] : '' ?>"> # of servings</label><br>
     <label for="instructions"><input type="text" id="instructions" name="instructions" value="<?php echo isset($_SESSION['inputs']['instructions']) ? $_SESSION['inputs']['instructions'] : '' ?>"> add commma separated steps</label><br>
     <label for="description"><input type="text" id="description" name="description" value="<?php echo isset($_SESSION['inputs']['description']) ? $_SESSION['inputs']['description'] : '' ?>"> description</label><br>
-    <label for="pic"><input type="file" id="pic" name="image" value="<?php echo isset($_SESSION['inputs']['image']) ? $_SESSION['inputs']['image'] : '' ?>">   PNG or JPEG</label><br>
+    <label for="pic"><input type="file" id="pic" name="image" class="simple-file-upload" value="<?php echo isset($_SESSION['inputs']['image']) ? $_SESSION['inputs']['image'] : '' ?>">   PNG or JPEG</label><br>
     <input id="submit" type="submit">
   </form>
   <?php unset($_SESSION['inputs']); ?>

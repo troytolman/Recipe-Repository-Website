@@ -27,7 +27,14 @@ if (isset($imageName) && is_string($imageName) && !empty($imageName)) {
     exit;
 }
 
-$target_dir = "app/images/";
+$imagefileURL = $_POST['image'];
+if (!empty($imagefileURL)) {
+    $_SESSION['message'] = $imagefileURL;
+    $_SESSION['message_type'] = 'sad';
+    header('Location: upload_loggedin.php');
+    exit;
+}
+$target_dir = "images/";
 $target_file = $target_dir . $imageName;
 $uploadOk = 1;
 $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
