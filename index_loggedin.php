@@ -24,7 +24,7 @@
 
 </div>
 
-<div id="explore"> 
+<!-- <div id="explore"> 
   Explore Boise Chef Now!!!
 </div>
 
@@ -39,7 +39,7 @@
   <label for="intermediate"><input type="checkbox" id="intermediate" name="items" value="intermediate"> intermediate</label><br>
   <label for="expert"><input type="checkbox" id="expert" name="items" value="expert"> expert</label><br>
 </form>
-</div>
+</div> -->
 
 
 <?php include_once("footer.html"); ?>

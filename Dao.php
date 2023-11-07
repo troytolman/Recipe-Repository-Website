@@ -86,11 +86,11 @@ class Dao {
     return $ret;
   }
 
-  public function addRecipe($title, $ingredients, $cooktime, $servings, $instructions, $target_file, $userID, $description, $tag1, $tag2) {
+  public function addRecipe($title, $ingredients, $cooktime, $servings, $instructions, $imagefileURL, $userID, $description, $tag1, $tag2) {
     $conn = $this->getConnection();
     $addRecipe =
-        "INSERT INTO recipes (userID, title, ingredients, cook_time, serving_size, instructions, image_path, description)
-         VALUES (:userID, :title, :ingredients, :cooktime, :servings, :instructions, :path, :description);";
+        "INSERT INTO recipes (userID, title, ingredients, cook_time, serving_size, instructions, image_url, description)
+         VALUES (:userID, :title, :ingredients, :cooktime, :servings, :instructions, :imagefileURL, :description);";
     $q = $conn->prepare($addRecipe);
     $q->bindParam(":userID", $userID);
     $q->bindParam(":title", $title);
@@ -98,7 +98,7 @@ class Dao {
     $q->bindParam(":cooktime", $cooktime);
     $q->bindParam(":servings", $servings);
     $q->bindParam(":instructions", $instructions);
-    $q->bindParam(":path", $target_file);
+    $q->bindParam(":imagefileURL", $imagefileURL);
     $q->bindParam(":description", $description);
     $q->execute();
     $q = $conn->prepare("SELECT recipeID FROM recipes WHERE title = :title LIMIT 1;");
@@ -134,7 +134,7 @@ class Dao {
   public function getFavRecipes($userID) {
     $conn = $this->getConnection();
     $recipeQuery = "SELECT 
-                      image_path,
+                      image_url,
                       recipes.recipeID as recipeID,
                       title,
                       description

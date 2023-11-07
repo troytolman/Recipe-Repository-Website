@@ -86,7 +86,7 @@ $dao = new Dao();
     echo '<div class="recipe-grid">';
     foreach ($recipes as $recipe) {
       echo '<div class="recipe-card">';
-      echo '<img src="' . $recipe['image_path'] . '" alt="' . $recipe['title'] . '">';
+      echo '<img src="' . $recipe['image_url'] . '" alt="' . $recipe['title'] . '">';
       echo '<h3><a href="recipe.php?id=' . $recipe['recipeID'] . '">' . $recipe['title'] . '</a></h3>';
       echo '<p>' . $recipe['description'] . '</p>';
       echo '</div>';

@@ -7,12 +7,12 @@
   <img src="junk.svg" alt="" width="400" height="400" id="junk">
 <h1 class="lowclass">Recipe Name from Popular Recipes</h1>
 <p class="lowclass">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.</p>
-
+<button id="explorebutton"> <a href="explore_loggedin.php">Explore Recipes!</button>
 </div>
 
 </div>
 
-<div id="explore"> 
+<!-- <div id="explore"> 
   Explore Boise Chef Now!!!
 </div>
 
@@ -27,7 +27,7 @@
   <label for="intermediate"><input type="checkbox" id="intermediate" name="items" value="intermediate"> intermediate</label><br>
   <label for="expert"><input type="checkbox" id="expert" name="items" value="expert"> expert</label><br>
 </form>
-</div>
+</div> -->
 
 
 <?php include_once("footer.html"); ?>

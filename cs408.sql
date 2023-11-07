@@ -16,7 +16,7 @@ CREATE TABLE recipes (
     serving_size INT NOT NULL,
     ingredients VARCHAR(600) NOT NULL,
     instructions VARCHAR(1000) NOT NULL,
-    image_path VARCHAR(200) NOT NULL
+    image_url VARCHAR(200) NOT NULL
 );
 
 CREATE TABLE favorites (

@@ -18,7 +18,7 @@
 
 <div class="title">
   <?php echo '<h1>' . $recipe['title'] . '</h1>' ?>
-  <button id="titlebutton">Add to Favorites</button>
+  <!-- <button id="titlebutton">Add to Favorites</button> -->
   <ul>
     <li>breakfast</li>
     <li>easy</li>
@@ -28,7 +28,7 @@
 <div class="recipedesc">
   <h2>Recipe Description</h2>
   <?php echo "<p>" . $recipe['description'] . "</p>"; 
-  echo '<img src=' . $recipe['image_path'] . ' >';
+  echo '<img src=' . $recipe['image_url'] . ' >';
   ?>
 </div>
 
