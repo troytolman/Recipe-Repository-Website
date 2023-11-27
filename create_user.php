@@ -16,10 +16,10 @@
       unset($_SESSION['message_type']);
    }
    ?>
-    <label><input type="text" id="email" name="email" value="<?php echo isset($_SESSION['input']['email']) ? $_SESSION['input']['email'] : '' ?>">Email</label><br>
-    <label><input type="text" id="username" name="username" value="<?php echo isset($_SESSION['input']['username']) ? $_SESSION['input']['username'] : '' ?>">Username</label><br>
-    <label><input type="password" id="password" name="password" value="<?php echo isset($_SESSION['input']['password']) ? $_SESSION['input']['password'] : '' ?>">Password</label><br>
-    <label><input type="submit" id="continue" name="login"></label><br>
+    <label for="email"><input type="text" id="email" name="email" value="<?php echo isset($_SESSION['input']['email']) ? $_SESSION['input']['email'] : '' ?>">Email</label><br>
+    <label for="username"><input type="text" id="username" name="username" value="<?php echo isset($_SESSION['input']['username']) ? $_SESSION['input']['username'] : '' ?>">Username</label><br>
+    <label for="password"><input type="password" id="password" name="password" value="<?php echo isset($_SESSION['input']['password']) ? $_SESSION['input']['password'] : '' ?>">Password</label><br>
+    <label for="continue"><input type="submit" id="continue" name="login"></label><br>
     <?php unset($_SESSION['input']); ?>
 </div>
 </div>

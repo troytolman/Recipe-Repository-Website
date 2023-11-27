@@ -1,6 +1,7 @@
 <!-- <!DOCTYPE html> -->
 <html>
 <head>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora">
   <link rel="stylesheet" href="style.css">
   <title>Boise Chef</title>
   <link rel="icon" type="image/x-icon" href="favicon-32x32.png">

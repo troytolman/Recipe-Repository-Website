@@ -156,16 +156,49 @@ class Dao {
     return $q->fetchAll(PDO::FETCH_ASSOC);
   }
 
+  // public function createUser($email, $username, $password) {
+  //   $salt = "9c95f8821e6e2"; 
+  //   $hashedPassword = password_hash($password . $salt, PASSWORD_DEFAULT);
+  //   $conn = $this->getConnection();
+  //   $addUser = "INSERT INTO users (user_email, user_name, user_password)
+  //               VALUES (:email, :username, :password);";
+  //   $q = $conn->prepare($addUser);
+  //   $q->bindParam(":email", $email);
+  //   $q->bindParam(":username", $username);
+  //   $q->bindParam(":password", $hashedPassword);
+  //   $q->execute();
+  // }
+
   public function createUser($email, $username, $password) {
+    $salt = "9c95f8821e6e2"; 
+
+    // Check if the username is already taken
+    if ($this->isUsernameTaken($username)) {
+        return false; // Username is already taken
+    }
+
+    $hashedPassword = password_hash($password . $salt, PASSWORD_DEFAULT);
     $conn = $this->getConnection();
     $addUser = "INSERT INTO users (user_email, user_name, user_password)
                 VALUES (:email, :username, :password);";
     $q = $conn->prepare($addUser);
     $q->bindParam(":email", $email);
     $q->bindParam(":username", $username);
-    $q->bindParam(":password", $password);
+    $q->bindParam(":password", $hashedPassword);
     $q->execute();
-  }
+
+    return true; // User created successfully
+}
+  private function isUsernameTaken($username) {
+    $conn = $this->getConnection();
+    $checkUsername = "SELECT COUNT(user_name) FROM users WHERE user_name = :username;";
+    $q = $conn->prepare($checkUsername);
+    $q->bindParam(":username", $username);
+    $q->execute();
+    $count = $q->fetchColumn();
+    
+    return ($count > 0); // Return true if the username is already taken
+}
 
   public function getUserID($username) {
     $conn = $this->getConnection();
@@ -175,20 +208,29 @@ class Dao {
     $q->execute();
     return $q->fetchColumn();
   }
- 
 
   public function authenticate($username, $password) {
     $conn = $this->getConnection();
-    $select = "SELECT count(user_name) FROM users WHERE user_name = :username AND user_password = :password;";
+    $select = "SELECT user_password FROM users WHERE user_name = :username;";
     $q = $conn->prepare($select);
     $q->bindParam(":username", $username);
-    $q->bindParam(":password", $password);
     $q->execute();
-    $ret = $q->fetchColumn();
-    if ($ret >= 1) {
-      return true;
-    } else {
-      return false;
+    $result = $q->fetch(PDO::FETCH_ASSOC);
+
+    if ($result) {
+        // Retrieve the stored hashed password and salt
+        $storedPassword = $result['user_password'];
+        $salt = "9c95f8821e6e2";
+
+        // Combine the entered password with the stored salt, then hash for comparison
+        $hashedEnteredPassword = password_hash($password . $salt, PASSWORD_DEFAULT);
+
+        // Compare the hashed entered password with the stored hashed password
+        if (password_verify($password . $salt, $storedPassword)) {
+            return true; // Password is correct
+        }
     }
+
+    return false; // Password is incorrect or user not found
   }
 } // end Dao
