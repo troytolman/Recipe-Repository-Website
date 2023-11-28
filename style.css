@@ -126,10 +126,22 @@ p {
   margin-bottom: 20px; /* Add some spacing between previews */
 }
 
+.checkboxes {
+  margin-top: 3%;
+  margin-bottom: 3%;
+}
+/* upload stuff*/
+.details {
+  margin-left: 35%;
+}
 
+#widget0 {
+  padding-top: 1%;
+}
 
-
-
+.textfields {
+  margin-top: 1%;
+}
 
 /* recipe stuff*/
 .title {

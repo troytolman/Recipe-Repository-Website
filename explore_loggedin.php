@@ -15,7 +15,7 @@
 ?>
 
 <div id="explore"> 
-  Explore Boise Chef Now!!!
+  Explore Boise Chef
 </div>
 <div id="search">
 <form id="searchform" method="GET" action="explore_loggedin.php">
@@ -27,16 +27,17 @@
     unset($_SESSION['message_type']);
  }
   ?>
-  <input type="text" name="titleSearch" placeholder="Search..">
-
-  <label><input type="checkbox" name="meal[]" value="breakfast">breakfast</label><br>
-  <label><input type="checkbox" name="meal[]" value="lunch">lunch</label><br>
-  <label><input type="checkbox" name="meal[]" value="dinner">dinner</label><br>
-  <label><input type="checkbox" name="meal[]" value="dessert">dessert</label><br>
-  <label><input type="checkbox" name="difficulty[]" value="easy">easy</label><br>
-  <label><input type="checkbox" name="difficulty[]" value="intermediate">intermediate</label><br>
-  <label><input type="checkbox" name="difficulty[]" value="hard">hard</label><br>
-  <input id="submit" type="submit">
+  <label for="titleSearch"><input type="text" id="titleSearch" name="titleSearch" placeholder="Search.."></label><br>
+  <div class="checkboxes">
+  <label for="breakfast"><input type="checkbox" id="breakfast" name="meal[]" value="breakfast">breakfast</label><br>
+  <label for="lunch"><input type="checkbox" id="lunch" name="meal[]" value="lunch">lunch</label><br>
+  <label for="dinner"><input type="checkbox" id="dinner" name="meal[]" value="dinner">dinner</label><br>
+  <label for="dessert"><input type="checkbox" id="dessert" name="meal[]" value="dessert">dessert</label><br>
+  <label for="easy"><input type="checkbox" id="easy" name="difficulty[]" value="easy">easy</label><br>
+  <label for="intermediate"><input type="checkbox" id="intermediate" name="difficulty[]" value="intermediate">intermediate</label><br>
+  <label for="hard"><input type="checkbox" id="hard" name="difficulty[]" value="hard">hard</label><br>
+</div>
+<input id="submit" type="submit">
 </form>
 </div>
 

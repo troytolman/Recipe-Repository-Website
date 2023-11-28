@@ -233,4 +233,13 @@ class Dao {
 
     return false; // Password is incorrect or user not found
   }
+
+  public function getRecipeImages() {
+    $conn = $this->getConnection();
+    $select = "SELECT image_url, title, recipeID FROM recipes LIMIT 5";
+    $q = $conn->prepare($select);
+    $q->execute();
+    return $q->fetchAll(PDO::FETCH_ASSOC);
+    
+  }
 } // end Dao

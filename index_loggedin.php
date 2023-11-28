@@ -32,28 +32,11 @@
 </div>
 
 <div id="carousel-text"> 
-  <h1>Explore Recipies Now!</h1>
+  <h1>Explore Recipes Now!</h1>
   <button onclick="location.href='explore.php'">Explore</button>
 </div>
 
 </div>
-
-<!-- <div id="explore"> 
-  Explore Boise Chef Now!!!
-</div>
-
-<div id="search">
-  <input type="text" placeholder="Search..">
-<form id="searchform">
-  <label for="breakfast"><input type="checkbox" id="breakfast" name="items" value="breakfast"> breakfast</label><br>
-  <label for="lunch"><input type="checkbox" id="lunch" name="items" value="lunch"> lunch</label><br>
-  <label for="dinner"><input type="checkbox" id="dinner" name="items" value="dinner"> dinner</label><br>
-  <label for="dessert"><input type="checkbox" id="dessert" name="items" value="dessert"> dessert</label><br>
-  <label for="beginner"><input type="checkbox" id="beginner" name="items" value="beginner"> beginner</label><br>
-  <label for="intermediate"><input type="checkbox" id="intermediate" name="items" value="intermediate"> intermediate</label><br>
-  <label for="expert"><input type="checkbox" id="expert" name="items" value="expert"> expert</label><br>
-</form>
-</div> -->
 
 
 <?php include_once("footer.html"); ?>

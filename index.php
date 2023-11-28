@@ -1,22 +1,22 @@
 <?php
   $page = 'index';
   require("nav.php"); 
+  require("Dao.php");
 ?>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <script src="jcarousel/dist/jquery.jcarousel.min.js"></script>
 <script src="main.js"></script>
 
-<!-- <div id="low">
-  <img src="junk.svg" alt="" width="400" height="400" id="junk">
-<h1 class="lowclass">Recipe Name from Popular Recipes</h1>
-<p class="lowclass">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.</p>
-<button id="explorebutton"> <a href="explore_loggedin.php">Explore Recipes!</button>
-</div> -->
-
-
 <div class="carousel-wrapper">
 <div data-jcarousel="true" data-wrap="circular" class="carousel">
 <ul>
+  <?php /*
+    $dao = new Dao();
+    $recipes = $dao->getRecipeImages();
+    foreach ($recipes as $recipe) {
+      echo '<li><img src="' . $recipe['image_url'] . '" width="600" height="400" alt=""></li>"';
+    }
+ */?> 
 <li><img src="images/img1.jpg" width="600" height="400" alt=""></li>
 <li><img src="images/img2.jpg" width="600" height="400" alt=""></li>
 <li><img src="images/img3.jpg" width="600" height="400" alt=""></li>
@@ -28,7 +28,7 @@
 </div>
 
 <div id="carousel-text"> 
-  <h1>Explore Recipies Now!</h1>
+  <h1>Explore Recipes Now!</h1>
   <button onclick="location.href='explore.php'">Explore</button>
 </div>
 </div>
