@@ -10,17 +10,17 @@
 <div class="carousel-wrapper">
 <div data-jcarousel="true" data-wrap="circular" class="carousel">
 <ul>
-  <?php /*
+  <?php
     $dao = new Dao();
     $recipes = $dao->getRecipeImages();
     foreach ($recipes as $recipe) {
       echo '<li><img src="' . $recipe['image_url'] . '" width="600" height="400" alt=""></li>"';
     }
- */?> 
-<li><img src="images/img1.jpg" width="600" height="400" alt=""></li>
+ ?> 
+<!-- <li><img src="images/img1.jpg" width="600" height="400" alt=""></li>
 <li><img src="images/img2.jpg" width="600" height="400" alt=""></li>
 <li><img src="images/img3.jpg" width="600" height="400" alt=""></li>
-<li><img src="images/img4.jpg" width="600" height="400" alt=""></li>
+<li><img src="images/img4.jpg" width="600" height="400" alt=""></li> -->
 </ul>
 </div>
 <a data-jcarousel-control="true" data-target="-=1" href="#" class="carousel-control-prev">&lsaquo;</a> 
